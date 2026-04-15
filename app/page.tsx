@@ -14,6 +14,9 @@ export default function Home() {
       <Technologies />
       <Projects />
       <Contact />
+      <footer className="border-t border-white/5 py-8 text-center text-xs text-gray-600">
+        Francisco Domínguez &mdash; {new Date().getFullYear()}
+      </footer>
     </main>
   )
 }
