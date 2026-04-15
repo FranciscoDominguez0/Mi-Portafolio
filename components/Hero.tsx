@@ -33,7 +33,7 @@ export default function Hero() {
 
             <div className="flex items-center justify-center lg:justify-start gap-2">
               <a
-                href="https://github.com/tu-usuario"
+                href="https://github.com/FranciscoDominguez0"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -44,7 +44,7 @@ export default function Hero() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/in/tu-usuario"
+                href="https://www.linkedin.com/in/francisco-dominguez-77953b33a/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
