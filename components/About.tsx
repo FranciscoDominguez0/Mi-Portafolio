@@ -5,8 +5,8 @@ export default function About() {
       <div className="absolute -top-20 left-1/3 w-[520px] h-[520px] bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 right-1/4 w-[420px] h-[420px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight">
           <span className="bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text text-transparent">
             Sobre mí
           </span>

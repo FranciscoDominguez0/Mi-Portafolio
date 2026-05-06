@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 
 const projects = [
   {
@@ -48,13 +49,15 @@ const projects = [
 export default function Projects() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null)
 
+  const previewSizes = '(min-width: 640px) 560px, 92vw'
+
   return (
     <section id="proyectos" className="py-24">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <p className="text-purple-400 text-sm font-medium mb-2 tracking-widest uppercase">Trabajo</p>
-          <h2 className="text-4xl font-bold text-white">Proyectos Destacados</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">Proyectos Destacados</h2>
         </div>
 
         <div className="flex flex-col gap-20">
@@ -96,11 +99,16 @@ export default function Projects() {
                           className="h-full w-full cursor-zoom-in"
                           aria-label={`Ampliar imagen de ${p.title}`}
                         >
-                          <img
-                            src={p.image}
-                            alt={`Vista previa de ${p.title}`}
-                            className="h-full w-full object-contain p-0"
-                          />
+                          <div className="relative h-full w-full">
+                            <Image
+                              src={p.image}
+                              alt={`Captura del proyecto: ${p.title}`}
+                              fill
+                              sizes={previewSizes}
+                              className="object-contain"
+                              priority={p.title === 'Sistema de Tickets'}
+                            />
+                          </div>
                         </button>
                       </div>
                     </div>
@@ -127,11 +135,15 @@ export default function Projects() {
                           className="h-full w-full cursor-zoom-in"
                           aria-label={`Ampliar imagen de ${p.title}`}
                         >
-                          <img
-                            src={p.image}
-                            alt={`Vista previa de ${p.title}`}
-                            className="h-full w-full object-contain p-0"
-                          />
+                          <div className="relative h-full w-full">
+                            <Image
+                              src={p.image}
+                              alt={`Captura del proyecto: ${p.title}`}
+                              fill
+                              sizes={previewSizes}
+                              className="object-contain"
+                            />
+                          </div>
                         </button>
                       </div>
                     </div>
@@ -158,11 +170,15 @@ export default function Projects() {
                           className="h-full w-full cursor-zoom-in"
                           aria-label={`Ampliar imagen de ${p.title}`}
                         >
-                          <img
-                            src={p.image}
-                            alt={`Vista previa de ${p.title}`}
-                            className="h-full w-full object-contain p-0"
-                          />
+                          <div className="relative h-full w-full">
+                            <Image
+                              src={p.image}
+                              alt={`Captura del proyecto: ${p.title}`}
+                              fill
+                              sizes={previewSizes}
+                              className="object-contain"
+                            />
+                          </div>
                         </button>
                       </div>
                     </div>
@@ -189,11 +205,15 @@ export default function Projects() {
                           className="h-full w-full cursor-zoom-in"
                           aria-label={`Ampliar imagen de ${p.title}`}
                         >
-                          <img
-                            src={p.image}
-                            alt={`Vista previa de ${p.title}`}
-                            className="h-full w-full object-contain p-0"
-                          />
+                          <div className="relative h-full w-full">
+                            <Image
+                              src={p.image}
+                              alt={`Captura del proyecto: ${p.title}`}
+                              fill
+                              sizes={previewSizes}
+                              className="object-contain"
+                            />
+                          </div>
                         </button>
                       </div>
                     </div>
@@ -205,18 +225,22 @@ export default function Projects() {
                     className="h-full w-full cursor-zoom-in"
                     aria-label={`Ampliar imagen de ${p.title}`}
                   >
-                    <img
-                      src={p.image}
-                      alt={`Vista previa de ${p.title}`}
-                      className={`h-full w-full object-contain ${
-                        p.title === 'Sistema de Tickets' ||
-                        p.title === 'Sistema de Notificaciones' ||
-                        p.title === 'Sistema de Gestión Agrícola' ||
-                        p.title === 'Control de Documentos'
-                          ? 'p-0'
-                          : 'p-2'
-                      }`}
-                    />
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={p.image}
+                        alt={`Captura del proyecto: ${p.title}`}
+                        fill
+                        sizes={previewSizes}
+                        className={`object-contain ${
+                          p.title === 'Sistema de Tickets' ||
+                          p.title === 'Sistema de Notificaciones' ||
+                          p.title === 'Sistema de Gestión Agrícola' ||
+                          p.title === 'Control de Documentos'
+                            ? ''
+                            : 'p-2'
+                        }`}
+                      />
+                    </div>
                   </button>
                 ) : (
                   'Vista previa del proyecto'
@@ -238,9 +262,23 @@ export default function Projects() {
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <a href={p.demo} className="bg-purple-600 hover:bg-purple-500 text-white text-sm px-5 py-2.5 rounded-xl transition-all font-medium">
-                    Ver mas
-                  </a>
+                  {p.demo && p.demo !== '#' ? (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-purple-600 hover:bg-purple-500 text-white text-sm px-5 py-2.5 rounded-xl transition-all font-medium"
+                    >
+                      Ver más
+                    </a>
+                  ) : (
+                    <span
+                      className="bg-white/5 border border-white/10 text-white/70 text-sm px-5 py-2.5 rounded-xl font-medium cursor-not-allowed"
+                      aria-label="Demo no disponible"
+                    >
+                      Próximamente
+                    </span>
+                  )}
                   <a href={p.code} className="border border-white/10 bg-white/5 hover:bg-white/10 text-white text-sm px-5 py-2.5 rounded-xl transition-all">
                     Ver Código
                   </a>
@@ -267,11 +305,16 @@ export default function Projects() {
               >
                 ×
               </button>
-              <img
-                src={selectedImage.src}
-                alt={`Imagen ampliada de ${selectedImage.title}`}
-                className="w-full max-h-[82vh] object-contain rounded-xl"
-              />
+              <div className="relative w-full h-[82vh]">
+                <Image
+                  src={selectedImage.src}
+                  alt={`Captura ampliada del proyecto: ${selectedImage.title}`}
+                  fill
+                  sizes="92vw"
+                  className="object-contain rounded-xl"
+                  priority
+                />
+              </div>
             </div>
           </div>
         ) : null}

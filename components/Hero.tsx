@@ -7,12 +7,12 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
               Hola, soy{' '}
-              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent whitespace-nowrap">
+              <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Francisco Domínguez
               </span>
               .
