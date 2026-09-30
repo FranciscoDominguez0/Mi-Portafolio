@@ -2,17 +2,59 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import ProjectModal, { ProjectData } from './ProjectModal'
 
-const projects = [
+const projects: ProjectData[] = [
+  {
+    tag: 'Proyecto Destacado',
+    title: 'PayMe Panamá',
+    description: 'Plataforma administrativa para PYMEs con gestión de catálogo, control de inventario, ventas e integración de pagos con Stripe.',
+    longDescription: 'PayMe Panamá es una solución integral diseñada para que las pequeñas y medianas empresas administren su presencia digital y ventas. Facilita la creación de catálogos de productos, control de stock y automatización del flujo de ventas.',
+    features: [
+      'Gestión de inventario y reposición de stock',
+      'Integración nativa con Stripe para pagos seguros',
+      'Panel administrativo y reportes en tiempo real',
+      'Roles de usuario para vendedores y administradores'
+    ],
+    tech: ['Laravel', 'Blade', 'Tailwind', 'Stripe'],
+    image: '/PayMe.png?v=2',
+    gallery: ['/PayMe.png?v=2', '/Pyme2.png'],
+    demo: 'https://pyme.rsfsecure.site/',
+    code: 'https://github.com/FranciscoDominguez0/ecommerce-pyme-panama',
+  },
+  {
+    tag: 'Proyecto Destacado',
+    title: 'VigiFact',
+    description: 'Sistema de facturación y dashboard analítico con métricas en tiempo real, gestión de ventas, clientes y reportes.',
+    longDescription: 'VigiFact centraliza la operación financiera de la empresa, permitiendo emitir, rastrear y gestionar facturas. Su dashboard principal ofrece un panorama claro de los ingresos, deudas y comportamiento de los clientes, todo en tiempo real.',
+    features: [
+      'Emisión y control de facturas (próxima integración DGI)',
+      'Dashboard con métricas visuales y gráficos',
+      'Gestión de cartera de clientes e historial crediticio',
+      'Exportación de reportes contables'
+    ],
+    tech: ['PHP', 'Laravel', 'PostgreSQL', 'Blade'],
+    image: '/VigiFact.png?v=2',
+    gallery: ['/VigiFact.png?v=2', '/VigiFact2.png'],
+    demo: 'https://facturacion.salome-studio.com/',
+    code: 'https://github.com/FranciscoDominguez0/Sistema-Facturacion',
+  },
   {
     tag: 'Proyecto Destacado',
     title: 'Sistema de Tickets',
     description: 'Plataforma de gestión de soporte empresarial con seguimiento en tiempo real, asignación de agentes y panel de métricas.',
+    longDescription: 'Una herramienta robusta de HelpDesk (Mesa de Ayuda) para manejar consultas y problemas técnicos. Permite a los clientes abrir tickets y a los agentes asignarlos, responderlos y cerrarlos de manera organizada, mejorando drásticamente el tiempo de respuesta.',
+    features: [
+      'Sistema de estados y prioridades (Alta, Media, Baja)',
+      'Asignación automática o manual a agentes de soporte',
+      'Historial de actividad y comentarios por ticket',
+      'Filtros de búsqueda avanzada'
+    ],
     tech: ['PHP', 'MySQL', 'JavaScript', 'CSS'],
-    image: '/Tickets.png',
+    image: '/Tickets.png?v=2',
+    gallery: ['/Tickets.png?v=2', '/Tickets2.png'],
     demo: 'https://soporte.vigitecpanama.com/',
     code: 'https://github.com/FranciscoDominguez0/Tickets',
-    align: 'left',
   },
   {
     tag: 'Proyecto Destacado',
@@ -22,7 +64,6 @@ const projects = [
     image: '/Notificaciones.png',
     demo: '#',
     code: 'https://github.com/FranciscoDominguez0/sistema-recordatorios',
-    align: 'right',
   },
   {
     tag: 'Proyecto Destacado',
@@ -32,7 +73,6 @@ const projects = [
     image: '/sistema-agricola.png',
     demo: '#',
     code: 'https://github.com/FranciscoDominguez0/CooperativaAgricola',
-    align: 'left',
   },
   {
     tag: 'Proyecto Destacado',
@@ -42,282 +82,89 @@ const projects = [
     image: '/Gestion_de_documentos_UP.png',
     demo: '#',
     code: 'https://github.com/FranciscoDominguez0/GraduacionUP',
-    align: 'right',
   },
 ]
 
 export default function Projects() {
-  const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null)
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null)
 
   const previewSizes = '(min-width: 640px) 560px, 92vw'
 
   return (
     <section id="proyectos" className="py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="text-center mb-12 sm:mb-16">
-          <p className="text-purple-400 text-sm font-medium mb-2 tracking-widest uppercase">Trabajo</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Proyectos Destacados</h2>
+          <p className="text-blue-500 text-xs sm:text-sm font-bold mb-3 tracking-[0.2em] uppercase">Proyectos Destacados</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Parte de mi trabajo reciente</h2>
+          <div className="h-1 w-20 bg-blue-600 mx-auto mt-6 rounded-full" />
         </div>
 
-        <div className="flex flex-col gap-20">
-          {projects.map((p) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {projects.map((p, index) => (
             <div
               key={p.title}
-              className={`flex flex-col ${p.align === 'right' ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-10 items-center`}
+              className="flex flex-col bg-[#111118] border border-white/5 hover:border-white/10 rounded-2xl overflow-hidden group transition-colors"
             >
-              {/* Preview */}
-              <div
-                className={`flex-1 w-full bg-[#0f0f14] border border-white/5 rounded-2xl overflow-hidden flex items-center justify-center text-gray-600 text-sm ${
-                  p.title === 'Sistema de Tickets' ||
-                  p.title === 'Sistema de Notificaciones' ||
-                  p.title === 'Sistema de Gestión Agrícola' ||
-                  p.title === 'Control de Documentos'
-                    ? 'aspect-[4/3] sm:aspect-[16/10]'
-                    : 'aspect-video'
-                }`}
-              >
-                {p.image && p.title === 'Sistema de Tickets' ? (
-                  <div className="relative h-full w-full overflow-hidden p-3 sm:p-4">
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#24123a] from-[5%] via-[#3b1d5c]/75 via-[48%] to-[#7a2e6d] to-[95%]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute -left-12 top-0 h-52 w-52 rounded-full bg-[#7a2e6d]/50 blur-[64px]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute -bottom-16 right-1/4 h-72 w-72 rounded-full bg-[#24123a]/45 blur-[80px]"
-                      aria-hidden
-                    />
-                    <div className="relative z-10 flex h-full min-h-0 w-full flex-col rounded-xl border border-white/15 bg-black/10 p-2 sm:p-3">
-                      <div className="min-h-0 flex-1 overflow-hidden rounded-lg border border-white/15 bg-black shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedImage({ src: p.image, title: p.title })}
-                          className="h-full w-full cursor-zoom-in"
-                          aria-label={`Ampliar imagen de ${p.title}`}
-                        >
-                          <div className="relative h-full w-full">
-                            <Image
-                              src={p.image}
-                              alt={`Captura del proyecto: ${p.title}`}
-                              fill
-                              sizes={previewSizes}
-                              className="object-contain"
-                              priority={p.title === 'Sistema de Tickets'}
-                            />
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : p.image && p.title === 'Sistema de Notificaciones' ? (
-                  <div className="relative h-full w-full overflow-hidden p-3 sm:p-4">
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-tl from-[#24123a] from-[12%] via-[#3b1d5c]/60 via-[38%] to-[#7a2e6d]/85 to-[82%]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute -right-8 top-1/4 h-60 w-60 -translate-y-1/2 rounded-full bg-[#3b1d5c]/55 blur-[72px]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute bottom-0 left-1/3 h-64 w-64 translate-y-1/4 rounded-full bg-[#7a2e6d]/40 blur-[56px]"
-                      aria-hidden
-                    />
-                    <div className="relative z-10 flex h-full min-h-0 w-full flex-col rounded-xl border border-white/15 bg-black/10 p-2 sm:p-3">
-                      <div className="min-h-0 flex-1 overflow-hidden rounded-lg border border-white/15 bg-black shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedImage({ src: p.image, title: p.title })}
-                          className="h-full w-full cursor-zoom-in"
-                          aria-label={`Ampliar imagen de ${p.title}`}
-                        >
-                          <div className="relative h-full w-full">
-                            <Image
-                              src={p.image}
-                              alt={`Captura del proyecto: ${p.title}`}
-                              fill
-                              sizes={previewSizes}
-                              className="object-contain"
-                            />
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : p.image && p.title === 'Sistema de Gestión Agrícola' ? (
-                  <div className="relative h-full w-full overflow-hidden p-3 sm:p-4">
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#24123a]/90 from-[8%] via-[#3b1d5c] via-[52%] to-[#7a2e6d]/80 to-[90%]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute left-1/2 top-1/2 h-[min(90%,22rem)] w-[min(95%,28rem)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#3b1d5c]/35 blur-[96px]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute -bottom-10 left-0 h-48 w-48 rounded-full bg-[#7a2e6d]/45 blur-[52px]"
-                      aria-hidden
-                    />
-                    <div className="relative z-10 flex h-full min-h-0 w-full flex-col rounded-xl border border-white/15 bg-black/10 p-2 sm:p-3">
-                      <div className="min-h-0 flex-1 overflow-hidden rounded-lg border border-white/15 bg-black shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedImage({ src: p.image, title: p.title })}
-                          className="h-full w-full cursor-zoom-in"
-                          aria-label={`Ampliar imagen de ${p.title}`}
-                        >
-                          <div className="relative h-full w-full">
-                            <Image
-                              src={p.image}
-                              alt={`Captura del proyecto: ${p.title}`}
-                              fill
-                              sizes={previewSizes}
-                              className="object-contain"
-                            />
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : p.image && p.title === 'Control de Documentos' ? (
-                  <div className="relative h-full w-full overflow-hidden p-3 sm:p-4">
-                    <div
-                      className="pointer-events-none absolute inset-0 bg-gradient-to-bl from-[#24123a] from-[10%] via-[#3b1d5c]/80 via-[56%] to-[#7a2e6d]/70 to-[92%]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute -left-6 top-1/3 h-56 w-56 -translate-y-1/2 rounded-full bg-[#3b1d5c]/45 blur-[70px]"
-                      aria-hidden
-                    />
-                    <div
-                      className="pointer-events-none absolute -right-10 bottom-0 h-64 w-64 translate-y-1/4 rounded-full bg-[#7a2e6d]/50 blur-[64px]"
-                      aria-hidden
-                    />
-                    <div className="relative z-10 flex h-full min-h-0 w-full flex-col rounded-xl border border-white/15 bg-black/10 p-2 sm:p-3">
-                      <div className="min-h-0 flex-1 overflow-hidden rounded-lg border border-white/15 bg-black shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedImage({ src: p.image, title: p.title })}
-                          className="h-full w-full cursor-zoom-in"
-                          aria-label={`Ampliar imagen de ${p.title}`}
-                        >
-                          <div className="relative h-full w-full">
-                            <Image
-                              src={p.image}
-                              alt={`Captura del proyecto: ${p.title}`}
-                              fill
-                              sizes={previewSizes}
-                              className="object-contain"
-                            />
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ) : p.image ? (
-                  <button
-                    type="button"
-                    onClick={() => setSelectedImage({ src: p.image, title: p.title })}
-                    className="h-full w-full cursor-zoom-in"
-                    aria-label={`Ampliar imagen de ${p.title}`}
-                  >
-                    <div className="relative h-full w-full">
-                      <Image
-                        src={p.image}
-                        alt={`Captura del proyecto: ${p.title}`}
-                        fill
-                        sizes={previewSizes}
-                        className={`object-contain ${
-                          p.title === 'Sistema de Tickets' ||
-                          p.title === 'Sistema de Notificaciones' ||
-                          p.title === 'Sistema de Gestión Agrícola' ||
-                          p.title === 'Control de Documentos'
-                            ? ''
-                            : 'p-2'
-                        }`}
-                      />
-                    </div>
-                  </button>
-                ) : (
-                  'Vista previa del proyecto'
-                )}
+              {/* Top Image Section */}
+              <div className="relative aspect-[4/3] w-full bg-[#0a0a0f] p-4 sm:p-6 overflow-hidden">
+                <span className="absolute top-4 left-5 text-white/90 font-bold text-sm z-10">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(p)}
+                  className="relative w-full h-full mt-4 rounded-xl border border-white/10 overflow-hidden shadow-2xl group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)] transition-all duration-300 text-left block"
+                  aria-label={`Ver detalles de ${p.title}`}
+                >
+                  <Image
+                    src={p.image}
+                    alt={`Captura del proyecto: ${p.title}`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-contain"
+                    unoptimized={true}
+                  />
+                </button>
               </div>
 
-              {/* Texto */}
-              <div className="flex-1 w-full">
-                <p className="text-purple-400 text-xs font-medium tracking-widest uppercase mb-2">{p.tag}</p>
-                <h3 className="text-2xl font-bold text-white mb-4">{p.title}</h3>
-                <div className="bg-[#13131a] border border-white/5 rounded-xl p-5 mb-4">
-                  <p className="text-gray-400 text-sm leading-relaxed">{p.description}</p>
-                </div>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {p.tech.map(t => (
-                    <span key={t} className="text-xs text-purple-300 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  {p.demo && p.demo !== '#' ? (
-                    <a
-                      href={p.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-purple-600 hover:bg-purple-500 text-white text-sm px-5 py-2.5 rounded-xl transition-all font-medium"
+              {/* Bottom Text Section */}
+              <div className="p-6 sm:p-8 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-white mb-3">{p.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">{p.description}</p>
+                
+                <div className="flex justify-between items-center mt-auto pt-4 border-t border-white/5">
+                  <div className="flex gap-2">
+                    {p.tech.slice(0, 3).map(t => (
+                      <span key={t} className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(p)}
+                      className="flex items-center gap-1.5 text-blue-500 hover:text-blue-400 text-sm font-medium transition-colors group/link"
                     >
-                      Ver más
-                    </a>
-                  ) : (
-                    <span
-                      className="bg-white/5 border border-white/10 text-white/70 text-sm px-5 py-2.5 rounded-xl font-medium cursor-not-allowed"
-                      aria-label="Demo no disponible"
-                    >
-                      Próximamente
-                    </span>
-                  )}
-                  <a href={p.code} className="border border-white/10 bg-white/5 hover:bg-white/10 text-white text-sm px-5 py-2.5 rounded-xl transition-all">
-                    Ver Código
-                  </a>
+                      Ver Proyecto
+                      <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {selectedImage ? (
-          <div
-            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center"
-            onClick={() => setSelectedImage(null)}
-          >
-            <div
-              className="relative w-full max-w-6xl max-h-[90vh] bg-[#0f0f14] border border-white/10 rounded-2xl p-3 sm:p-4"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={() => setSelectedImage(null)}
-                className="absolute right-3 top-3 h-9 w-9 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 text-white text-lg leading-none"
-                aria-label="Cerrar visor"
-              >
-                ×
-              </button>
-              <div className="relative w-full h-[82vh]">
-                <Image
-                  src={selectedImage.src}
-                  alt={`Captura ampliada del proyecto: ${selectedImage.title}`}
-                  fill
-                  sizes="92vw"
-                  className="object-contain rounded-xl"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        ) : null}
+        {selectedProject && (
+          <ProjectModal 
+            project={selectedProject} 
+            onClose={() => setSelectedProject(null)} 
+          />
+        )}
 
       </div>
     </section>
