@@ -7,6 +7,23 @@ import ProjectModal, { ProjectData } from './ProjectModal'
 const projects: ProjectData[] = [
   {
     tag: 'Proyecto Destacado',
+    title: 'Landing Page Vigitec',
+    description: 'Landing page moderna y profesional para Vigitec Panamá, con sistema de contacto automatizado.',
+    longDescription: 'Página web de aterrizaje para la empresa tecnológica Vigitec Panamá. Desarrollada con un enfoque en rendimiento, SEO y alta conversión. Implementa un sistema de manejo de correos electrónicos robusto para la comunicación directa con los clientes.',
+    features: [
+      'Formulario de contacto integrado con Resend',
+      'Diseño 100% responsivo y animaciones fluidas',
+      'Tipado estricto para mayor mantenibilidad del código',
+      'Estructura modular y escalable'
+    ],
+    tech: ['Node.js', 'Resend', 'TypeScript', 'Tailwind'],
+    image: '/Vigitec.png',
+    gallery: ['/Vigitec.png', '/Vigitec2.png'],
+    demo: 'https://vigitecpanama.com',
+    code: '#',
+  },
+  {
+    tag: 'Proyecto Destacado',
     title: 'PayMe Panamá',
     description: 'Plataforma administrativa para PYMEs con gestión de catálogo, control de inventario, ventas e integración de pagos con Stripe.',
     longDescription: 'PayMe Panamá es una solución integral diseñada para que las pequeñas y medianas empresas administren su presencia digital y ventas. Facilita la creación de catálogos de productos, control de stock y automatización del flujo de ventas.',
