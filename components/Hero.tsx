@@ -2,12 +2,12 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center pt-24 pb-20 relative overflow-hidden">
+    <section className="min-h-screen flex items-center pt-16 lg:pt-24 pb-12 lg:pb-20 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/[0.02] to-transparent pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
-        <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-6 text-center lg:text-left">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+          <div className="lg:col-span-6 text-center lg:text-left order-last lg:order-none">
             <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
               Hola, soy{' '}
               <span className="text-sky-300">
@@ -64,7 +64,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-6 flex justify-center lg:justify-end relative">
+          <div className="lg:col-span-6 flex justify-center lg:justify-end relative order-first lg:order-none">
             {/* Concentric rings background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[500px] max-h-[500px] pointer-events-none">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] rounded-full border border-sky-300/5" />
@@ -73,7 +73,7 @@ export default function Hero() {
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] rounded-full border border-sky-300/30" />
             </div>
 
-            <div className="relative w-[300px] h-[400px] sm:w-[400px] sm:h-[500px] z-10 flex items-end justify-center">
+            <div className="relative w-[240px] h-[320px] sm:w-[350px] sm:h-[450px] lg:w-[400px] lg:h-[500px] z-10 flex items-end justify-center">
               <Image
                 src="/Pefil.png"
                 alt="Francisco Domínguez"

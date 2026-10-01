@@ -136,6 +136,26 @@ export default function Projects() {
                   <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
                     {p.title}
                   </h3>
+
+                  {/* Mobile Image (Between Title and Description) */}
+                  <div className="block lg:hidden w-full mb-8">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(p)}
+                      className="relative z-10 w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#171717] border border-white/10 shadow-xl block group"
+                      aria-label={`Ver detalles de ${p.title}`}
+                    >
+                      <Image
+                        src={p.image}
+                        alt={`Captura del proyecto: ${p.title}`}
+                        fill
+                        sizes="100vw"
+                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                        unoptimized
+                      />
+                    </button>
+                  </div>
+
                   <p className="text-gray-400 text-base sm:text-lg leading-relaxed mb-8">
                     {p.longDescription || p.description}
                   </p>
@@ -160,8 +180,8 @@ export default function Projects() {
                   </button>
                 </div>
 
-                {/* Image Column */}
-                <div className="w-full lg:w-1/2 relative mt-8 lg:mt-0">
+                {/* Image Column (Desktop) */}
+                <div className="hidden lg:block w-full lg:w-1/2 relative mt-8 lg:mt-0">
                    {/* Decorative Offset */}
                    <div className={`hidden sm:block absolute top-6 bottom-[-1.5rem] w-full rounded-2xl z-0 ${isEven ? 'bg-sky-500 left-[-1.5rem]' : 'border-[6px] border-sky-500 right-[-1.5rem]'}`} />
                    

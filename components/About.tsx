@@ -5,7 +5,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Left Column */}
-          <div>
+          <div className="text-center lg:text-left">
             <div className="inline-block bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg mb-6">
               <span className="text-sky-300 text-xs font-bold tracking-[0.2em] uppercase">Sobre mí</span>
             </div>
@@ -34,52 +34,52 @@ export default function About() {
           {/* Right Column */}
           <div className="relative border border-white/5 rounded-3xl bg-[#171717]/50 p-2 sm:p-0">
             {/* Inner Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 relative">
-              {/* Divider lines for desktop */}
-              <div className="hidden sm:block absolute top-1/2 left-4 right-4 h-px bg-white/5 -translate-y-1/2" />
-              <div className="hidden sm:block absolute top-4 bottom-4 left-1/2 w-px bg-white/5 -translate-x-1/2" />
+            <div className="grid grid-cols-2 relative">
+              {/* Divider lines for all screens */}
+              <div className="absolute top-1/2 left-4 right-4 h-px bg-white/5 -translate-y-1/2" />
+              <div className="absolute top-4 bottom-4 left-1/2 w-px bg-white/5 -translate-x-1/2" />
               
               {/* Stat 1 */}
-              <div className="p-6 sm:p-8 flex items-center gap-5 border-b border-white/5 sm:border-none">
-                <div className="shrink-0 w-14 h-14 bg-sky-200 rounded-2xl flex items-center justify-center text-neutral-900 shadow-lg shadow-sky-200/10">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              <div className="p-5 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3 sm:gap-5 text-center sm:text-left">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-sky-200 rounded-2xl flex items-center justify-center text-neutral-900 shadow-lg shadow-sky-200/10">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white leading-none mb-1.5">1</h3>
-                  <p className="text-gray-400 text-sm">Año de Exp.</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none mb-1.5">1</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Año de Exp.</p>
                 </div>
               </div>
 
               {/* Stat 2 */}
-              <div className="p-6 sm:p-8 flex items-center gap-5 border-b border-white/5 sm:border-none">
-                <div className="shrink-0 w-14 h-14 bg-sky-200 rounded-2xl flex items-center justify-center text-neutral-900 shadow-lg shadow-sky-200/10">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+              <div className="p-5 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3 sm:gap-5 text-center sm:text-left">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-sky-200 rounded-2xl flex items-center justify-center text-neutral-900 shadow-lg shadow-sky-200/10">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white leading-none mb-1.5">10+</h3>
-                  <p className="text-gray-400 text-sm">Proyectos</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none mb-1.5">10+</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Proyectos</p>
                 </div>
               </div>
 
               {/* Stat 3 */}
-              <div className="p-6 sm:p-8 flex items-center gap-5 border-b border-white/5 sm:border-none">
-                <div className="shrink-0 w-14 h-14 bg-sky-300/10 border border-sky-300/30 rounded-2xl flex items-center justify-center text-sky-300">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
+              <div className="p-5 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3 sm:gap-5 text-center sm:text-left">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-sky-300/10 border border-sky-300/30 rounded-2xl flex items-center justify-center text-sky-300">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" /></svg>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white leading-none mb-1.5">Full Stack</h3>
-                  <p className="text-gray-400 text-sm">Desarrollo Web</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white leading-none mb-1.5">Full Stack</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Desarrollo Web</p>
                 </div>
               </div>
 
               {/* Stat 4 */}
-              <div className="p-6 sm:p-8 flex items-center gap-5">
-                <div className="shrink-0 w-14 h-14 bg-sky-200 rounded-2xl flex items-center justify-center text-neutral-900 shadow-lg shadow-sky-200/10">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              <div className="p-5 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3 sm:gap-5 text-center sm:text-left">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 bg-sky-200 rounded-2xl flex items-center justify-center text-neutral-900 shadow-lg shadow-sky-200/10">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
                 <div>
-                  <h3 className="text-3xl font-bold text-white leading-none mb-1.5">100%</h3>
-                  <p className="text-gray-400 text-sm">Compromiso</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-white leading-none mb-1.5">100%</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm">Compromiso</p>
                 </div>
               </div>
 
