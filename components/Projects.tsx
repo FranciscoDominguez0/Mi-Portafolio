@@ -61,7 +61,8 @@ const projects: ProjectData[] = [
     title: 'Sistema de Notificaciones',
     description: 'Plataforma de alertas y recordatorios multicanal con soporte para email, SMS y notificaciones push.',
     tech: ['Node.js', 'Express', 'React', 'TypeScript', 'Nodemailer'],
-    image: '/Notificaciones.png',
+    image: '/Notificaciones1.png',
+    gallery: ['/Notificaciones1.png', '/Notificaciones2.png'],
     demo: '#',
     code: 'https://github.com/FranciscoDominguez0/sistema-recordatorios',
   },
@@ -87,6 +88,7 @@ const projects: ProjectData[] = [
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null)
+  const [showAll, setShowAll] = useState(false)
 
   const previewSizes = '(min-width: 640px) 560px, 92vw'
 
@@ -95,69 +97,89 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="text-center mb-12 sm:mb-16">
-          <p className="text-blue-500 text-xs sm:text-sm font-bold mb-3 tracking-[0.2em] uppercase">Proyectos Destacados</p>
+          <p className="text-sky-300 text-xs sm:text-sm font-bold mb-3 tracking-[0.2em] uppercase">Proyectos Destacados</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Parte de mi trabajo reciente</h2>
-          <div className="h-1 w-20 bg-blue-600 mx-auto mt-6 rounded-full" />
+          <div className="h-1 w-20 bg-sky-300 mx-auto mt-6 rounded-full" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {projects.map((p, index) => (
-            <div
-              key={p.title}
-              className="flex flex-col bg-[#111118] border border-white/5 hover:border-white/10 rounded-2xl overflow-hidden group transition-colors"
-            >
-              {/* Top Image Section */}
-              <div className="relative aspect-[4/3] w-full bg-[#0a0a0f] p-4 sm:p-6 overflow-hidden">
-                <span className="absolute top-4 left-5 text-white/90 font-bold text-sm z-10">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+        <div className="flex flex-col gap-24 sm:gap-32 mt-8">
+          {projects.slice(0, showAll ? projects.length : 4).map((p, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div 
+                key={p.title} 
+                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center`}
+              >
                 
-                <button
-                  type="button"
-                  onClick={() => setSelectedProject(p)}
-                  className="relative w-full h-full mt-4 rounded-xl border border-white/10 overflow-hidden shadow-2xl group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.7)] transition-all duration-300 text-left block"
-                  aria-label={`Ver detalles de ${p.title}`}
-                >
-                  <Image
-                    src={p.image}
-                    alt={`Captura del proyecto: ${p.title}`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="object-contain"
-                    unoptimized={true}
-                  />
-                </button>
-              </div>
+                {/* Text Column */}
+                <div className="w-full lg:w-1/2 flex flex-col items-start text-left z-10">
+                  <p className="text-sky-400 text-lg sm:text-xl font-medium tracking-widest mb-3 uppercase">
+                    PROYECTO {index + 1}
+                  </p>
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
+                    {p.title}
+                  </h3>
+                  <p className="text-gray-400 text-base sm:text-lg leading-relaxed mb-8">
+                    {p.longDescription || p.description}
+                  </p>
 
-              {/* Bottom Text Section */}
-              <div className="p-6 sm:p-8 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-white mb-3">{p.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">{p.description}</p>
-                
-                <div className="flex justify-between items-center mt-auto pt-4 border-t border-white/5">
-                  <div className="flex gap-2">
-                    {p.tech.slice(0, 3).map(t => (
-                      <span key={t} className="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">
+                  <div className="flex flex-wrap gap-2 mb-10">
+                    {p.tech.map(t => (
+                      <span key={t} className="px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-gray-300">
                         {t}
                       </span>
                     ))}
                   </div>
                   
-                  <div className="flex gap-4">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedProject(p)}
-                      className="flex items-center gap-1.5 text-blue-500 hover:text-blue-400 text-sm font-medium transition-colors group/link"
-                    >
-                      Ver Proyecto
-                      <svg className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(p)}
+                    className="flex items-center gap-4 text-white hover:text-sky-300 font-semibold transition-colors group text-sm sm:text-base tracking-wide"
+                  >
+                    <svg className="w-6 h-6 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                    Ver detalles
+                  </button>
                 </div>
+
+                {/* Image Column */}
+                <div className="w-full lg:w-1/2 relative mt-8 lg:mt-0">
+                   {/* Decorative Offset */}
+                   <div className={`hidden sm:block absolute top-6 bottom-[-1.5rem] w-full rounded-2xl z-0 ${isEven ? 'bg-sky-500 left-[-1.5rem]' : 'border-[6px] border-sky-500 right-[-1.5rem]'}`} />
+                   
+                   <button
+                     type="button"
+                     onClick={() => setSelectedProject(p)}
+                     className="relative z-10 w-full aspect-[4/3] rounded-2xl overflow-hidden bg-[#171717] border border-white/10 shadow-2xl transition-transform hover:-translate-y-2 duration-300 block group"
+                     aria-label={`Ver detalles de ${p.title}`}
+                   >
+                     <Image
+                       src={p.image}
+                       alt={`Captura del proyecto: ${p.title}`}
+                       fill
+                       sizes="(min-width: 1024px) 50vw, 100vw"
+                       className="object-contain p-4 sm:p-8 group-hover:scale-105 transition-transform duration-500"
+                       unoptimized
+                     />
+                   </button>
+                </div>
+
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+        {!showAll && projects.length > 4 && (
+          <div className="mt-20 flex justify-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="bg-sky-200 hover:bg-sky-300 text-neutral-900 py-3.5 px-10 rounded-xl text-sm font-bold transition-all"
+            >
+              Ver todos
+            </button>
+          </div>
+        )}
 
         {selectedProject && (
           <ProjectModal 

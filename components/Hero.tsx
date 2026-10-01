@@ -3,15 +3,14 @@ import Image from 'next/image'
 export default function Hero() {
   return (
     <section className="min-h-screen flex items-center pt-24 pb-20 relative overflow-hidden">
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-white/[0.02] to-transparent pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full relative z-10">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 text-center lg:text-left">
             <h1 className="text-3xl sm:text-5xl font-bold text-white mb-4 leading-tight">
               Hola, soy{' '}
-              <span className="text-blue-500">
+              <span className="text-sky-300">
                 Francisco Domínguez
               </span>
               .
@@ -52,31 +51,37 @@ export default function Hero() {
               <a
                 href="/CV_FranciscoDominguez.pdf"
                 download
-                className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-xl text-sm transition-all font-medium shadow-lg shadow-blue-500/20"
+                className="bg-sky-200 hover:bg-sky-300 text-neutral-900 px-5 py-2.5 rounded-xl text-sm transition-all font-semibold shadow-lg shadow-sky-200/10"
               >
                 Descargar CV
               </a>
               <a
                 href="#contacto"
-                className="border border-blue-500/30 hover:border-blue-500 text-blue-300 bg-blue-500/10 hover:bg-blue-500/15 px-5 py-2.5 rounded-xl text-sm transition-all"
+                className="border border-sky-300/20 hover:border-sky-300/40 text-sky-200 bg-sky-300/5 hover:bg-sky-300/10 px-5 py-2.5 rounded-xl text-sm transition-all"
               >
                 Contactar
               </a>
             </div>
           </div>
 
-          <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px]">
-              <div className="absolute inset-[-18%] rounded-full bg-blue-600/10 blur-2xl" />
-              <div className="absolute inset-[-6%] rounded-full border border-blue-500/20 bg-white/[0.02] backdrop-blur-sm" />
-              <div className="absolute inset-[0%] rounded-full bg-blue-500/5" />
+          <div className="lg:col-span-6 flex justify-center lg:justify-end relative">
+            {/* Concentric rings background */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[500px] max-h-[500px] pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] rounded-full border border-sky-300/5" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full border border-sky-300/10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full border border-sky-300/20" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40%] h-[40%] rounded-full border border-sky-300/30" />
+            </div>
+
+            <div className="relative w-[300px] h-[400px] sm:w-[400px] sm:h-[500px] z-10 flex items-end justify-center">
               <Image
-                src="/foto-perfil.jpeg"
+                src="/Pefil.png"
                 alt="Francisco Domínguez"
                 fill
-                sizes="(min-width: 1024px) 320px, 260px"
-                className="rounded-full object-cover ring-2 ring-blue-500/30 relative z-10"
+                sizes="(min-width: 1024px) 400px, 300px"
+                className="object-contain object-bottom relative z-10 drop-shadow-2xl"
                 priority
+                unoptimized
               />
             </div>
           </div>

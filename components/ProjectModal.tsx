@@ -83,7 +83,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                  alt={`Captura ${currentIndex + 1} de ${project.title}`}
                  fill
                  className="object-contain transition-opacity duration-300"
-                 unoptimized={true}
+                 unoptimized
                />
                
                {/* Hover overlay hint */}
@@ -212,7 +212,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               alt={`Captura ampliada ${currentIndex + 1}`}
               fill
               className="object-contain"
-              unoptimized={true}
+              unoptimized
             />
           </div>
           

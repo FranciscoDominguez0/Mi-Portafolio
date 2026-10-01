@@ -57,7 +57,7 @@ export default function Technologies() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
 
         <div className="text-center mb-12 sm:mb-14">
-          <p className="text-blue-400 text-sm font-medium mb-2 tracking-widest uppercase">Stack</p>
+          <p className="text-sky-300 text-sm font-medium mb-2 tracking-widest uppercase">Stack</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-white">Tecnologías</h2>
         </div>
 
@@ -65,10 +65,11 @@ export default function Technologies() {
           {techs.map((tech) => (
             <div
               key={tech.name}
-              className="group border border-white/5 bg-white/[0.03] hover:bg-blue-500/10 hover:border-blue-500/30 rounded-2xl px-4 py-6 flex flex-col items-center gap-3 transition-all cursor-default"
+              className="group border border-white/5 bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/20 rounded-2xl px-4 py-6 flex flex-col items-center gap-3 transition-all cursor-default"
             >
               <div className="h-10 flex items-center justify-center">
-                <Image
+                {/* Usamos etiqueta img normal para SVGs externos para evitar problemas de Next.js Image */}
+                <img
                   src={tech.src}
                   alt={tech.name}
                   width={tech.width}
