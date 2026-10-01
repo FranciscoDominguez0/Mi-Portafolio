@@ -9,22 +9,21 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Francisco Domínguez | Desarrollador de Software Full Stack',
-    template: '%s | Francisco Domínguez',
+    default: 'Francisco Domínguez | Desarrollador de Software en Panamá',
+    template: '%s | Desarrollador Web Panamá',
   },
   description:
-    'Portafolio profesional de Francisco Domínguez. Desarrollador de software Full Stack especializado en React, Next.js, Node.js y Laravel. Creación de sitios y aplicaciones web modernas y escalables.',
+    '¿Buscas un desarrollador de software en Panamá? Francisco Domínguez es un programador Full Stack especializado en creación de páginas web, sistemas a medida, React, Node.js y Laravel.',
   keywords: [
+    'Desarrollador de Software Panamá',
+    'Programador en Panamá',
+    'Desarrollo Web Panamá',
+    'Creador de páginas web Panamá',
     'Francisco Domínguez',
-    'Desarrollador Web',
-    'Full Stack Developer',
-    'Frontend',
-    'Backend',
-    'Programador Panamá',
-    'Desarrollo de Software',
+    'Full Stack Developer Panamá',
+    'Ingeniero de Software Panamá',
     'React',
     'Next.js',
-    'TypeScript',
     'Node.js',
     'Laravel'
   ],
@@ -55,9 +54,9 @@ export const metadata: Metadata = {
     siteName: 'Portafolio de Francisco Domínguez',
     images: [
       {
-        url: '/Pefil.png',
-        width: 800,
-        height: 600,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Francisco Domínguez - Desarrollador de Software',
       },
     ],
@@ -67,7 +66,7 @@ export const metadata: Metadata = {
     title: 'Francisco Domínguez | Desarrollador de Software',
     description:
       'Echa un vistazo a mi portafolio profesional. Especializado en React, Node.js, Next.js y Laravel.',
-    images: ['/Pefil.png'],
+    images: ['/og-image.png'],
   },
 }
 

@@ -17,7 +17,7 @@ export default function Hero() {
             </h1>
 
 
-            <p className="text-xl text-gray-300 mb-3">Desarrollador de Software</p>
+            <h2 className="text-xl sm:text-2xl text-gray-300 mb-3 font-medium">Desarrollador de Software en Panamá</h2>
             <p className="text-gray-400 mb-8 max-w-xl lg:max-w-none mx-auto lg:mx-0">
               Construyo aplicaciones web modernas centradas en el usuario, cuidando el diseño, la performance y la calidad del producto.
             </p>

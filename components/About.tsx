@@ -15,8 +15,8 @@ export default function About() {
             </h2>
             
             <p className="text-gray-400 leading-relaxed text-lg mb-8">
-              Soy desarrollador de software enfocado en crear aplicaciones web centradas en el usuario.
-              Me especializo en construir experiencias rápidas, claras y escalables, cuidando el diseño,
+              Soy desarrollador de software radicado en Panamá, enfocado en crear aplicaciones web centradas en el usuario.
+              Me especializo en construir sistemas a medida, experiencias rápidas y escalables, cuidando el diseño,
               la performance y la calidad del producto de principio a fin.
             </p>
             
